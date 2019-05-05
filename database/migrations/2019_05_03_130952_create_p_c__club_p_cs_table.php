@@ -20,6 +20,8 @@ class CreatePCClubPCsTable extends Migration
             //$table->integer('busy')->default(0);
 
             $table->timestamps();
+
+            //$table->foreign('PC_Name')->references('id')->on('pc_club_pc');
         });
     }
 

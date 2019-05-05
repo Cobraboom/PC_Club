@@ -16,15 +16,18 @@ class CreatePCClubSesTable extends Migration
         Schema::create('p_c__club_ses', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->integer('id_pc')->unsigned()->index();
-            $table->string('pc_name')->nullable();
+            $table->integer('user_id')->unsigned()->index();
+            //$table->string('pc_name')->nullable();
             $table->dateTime('time_start')->nullable();
             $table->dateTime('time_end')->nullable();
-            $table->string('user');
+
 
             $table->timestamps();
 
             $table->foreign('id_pc')->references('id')->on('pc_club_pc');
-            $table->foreign('pc_name')->references('PC_Name')->on('pc_club_pc');
+            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('pc_name')->references('PC_Name')->on('pc_club_pc');
+
         });
     }
 

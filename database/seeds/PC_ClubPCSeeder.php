@@ -15,16 +15,18 @@ class PC_ClubPCSeeder extends Seeder
 
         $PC_name = 'Администратор';
         $PC[] = [
-            //'id' => 0,
+            'id' => 1,
             'PC_Name' => $PC_name,
 
         ];
 
-        for ($i = 1; $i <= 10; $i++){
-            $PC_name = 'PC_'.$i;
+        for ($i = 2; $i <= 11; $i++){
+            $n = $i-1;
+            $PC_name = 'PC_'.$n;
 
 
             $PC[]= [
+                'id' => $i,
                 'PC_Name' => $PC_name,
 
             ];
