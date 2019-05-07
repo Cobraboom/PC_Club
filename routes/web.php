@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['namespace' => 'Bron', 'prefix' => 'bron'], function (){
+    Route::resource('bron', 'PostController')->names('bron.posts');
+});
+
+
+//Route::resource('rest', 'RestTestController')->names('restTest');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
