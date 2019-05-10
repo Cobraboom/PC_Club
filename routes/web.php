@@ -15,13 +15,39 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Bron', 'prefix' => 'bron'], function (){
-    Route::resource('bron', 'PostController')->names('bron.posts');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'PC_Club', 'prefix' => 'sessia'], function (){
+    Route::resource('bron', 'PostController')->names('PC_Club.posts');
 });
 
 
+
+//Админка ПК Клуба
+
+$groupData =[
+    'namespace' => 'PC_Club\Admin',
+    'prefix' => 'admin/PC_Club',
+];
+Route::group($groupData, function (){
+    //PC_Club_PC
+    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    Route::resource('PC', 'PC_Controller')
+        ->only($methods)
+        ->names('PC_Club.admin.PC');
+});
+
+Route::group($groupData, function (){
+    //PC_Club_Ses
+    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    Route::resource('Ses', 'Ses_Controller')
+        ->only($methods)
+        ->names('PC_Club.admin.Ses');
+});
+
 //Route::resource('rest', 'RestTestController')->names('restTest');
 
-Auth::routes();
+//Route::get('app', 'HomeController@index')->name('app');
 
-Route::get('/home', 'HomeController@index')->name('home');
+

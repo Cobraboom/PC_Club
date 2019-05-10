@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Sessia;
+namespace App\Http\Controllers\PC_Club\Admin;
 
-
-use App\Models\PC_ClubSes;
+use App\Models\PC_ClubPC;
 use Illuminate\Http\Request;
 
 
-class PostController extends BaseController
+class PC_Controller extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class PostController extends BaseController
      */
     public function index()
     {
-        //$Sess = PC_ClubSes::all();
+        $paginator = PC_ClubPC::paginate(5);
 
-        return view('PC_Club.posts.index'/*,compact('Sess')*/);
+        return view('PC_Club.admin.PC.index', compact('paginator'));
     }
 
     /**
@@ -28,7 +27,7 @@ class PostController extends BaseController
      */
     public function create()
     {
-        //
+        //dd(__METHOD__);
     }
 
     /**
@@ -39,18 +38,7 @@ class PostController extends BaseController
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        //dd(__METHOD__);
     }
 
     /**
@@ -61,7 +49,7 @@ class PostController extends BaseController
      */
     public function edit($id)
     {
-        //
+        //dd(__METHOD__);
     }
 
     /**
@@ -73,17 +61,6 @@ class PostController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        //dd(__METHOD__);
     }
 }

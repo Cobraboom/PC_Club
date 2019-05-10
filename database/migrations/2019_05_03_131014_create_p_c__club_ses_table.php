@@ -23,8 +23,9 @@ class CreatePCClubSesTable extends Migration
 
 
             $table->timestamps();
+            $table->softDeletes()->nullable();
 
-            $table->foreign('id_pc')->references('id')->on('pc_club_pc');
+            $table->foreign('id_pc')->references('id')->on('p_c__club_p_cs');
             $table->foreign('user_id')->references('id')->on('users');
             //$table->foreign('pc_name')->references('PC_Name')->on('pc_club_pc');
 
@@ -38,6 +39,6 @@ class CreatePCClubSesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pc_club_ses');
+        Schema::dropIfExists('p_c__club_ses');
     }
 }

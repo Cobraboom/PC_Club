@@ -13,13 +13,13 @@ class CreatePCClubPCsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pc_club_pc', function (Blueprint $table) {
+        Schema::create('p_c__club_p_cs', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('PC_Name')->unique();
-            //$table->integer('busy')->default(0);
-
+            $table->text('PC_Info')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             //$table->foreign('PC_Name')->references('id')->on('pc_club_pc');
         });
@@ -32,6 +32,6 @@ class CreatePCClubPCsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pc_club_pc');
+        Schema::dropIfExists('pc_club_pcs');
     }
 }

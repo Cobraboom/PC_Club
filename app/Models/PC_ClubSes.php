@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PC_ClubSes extends Model
 {
-    //use SoftDeletes;
+    use SoftDeletes;
+
+    protected $fillable =[
+            'id_pc',
+            'user_id',
+            'time_start',
+            'time_end',
+        ];
 }

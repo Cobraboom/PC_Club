@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Sessia;
+namespace App\Http\Controllers\PC_Club;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
