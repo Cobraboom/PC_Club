@@ -15,13 +15,18 @@ class UsersTableSeeder extends Seeder
             [
                 'login' => 'Администратор',
                 'email' => 'admin@g.ru',
-                'password' =>bcrypt('admin123'),
+                'password' => bcrypt('admin123'),
             ],
             [
                 'login' => 'User_1',
                 'email' => 'user_1@g.ru',
-                'password' =>bcrypt('user123'),
-            ]
+                'password' => bcrypt('user123'),
+            ],
+            [
+                'login' => 'Клиент',
+                'email' => 'klient@g.ru',
+                'password' => bcrypt('klient123'),
+            ],
         ];
         DB::table('users')->insert($data);
     }

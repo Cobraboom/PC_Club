@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e6585d-a052-499d-ace7-fece3c35ee7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/PC/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/PC/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_add_col.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_main_col.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Sessia/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PC_Club/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Sessia/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PC_Club/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PC_ClubSes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PC_ClubSes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_03_130952_create_p_c__club_p_cs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_03_130952_create_p_c__club_p_cs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_03_131014_create_p_c__club_ses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_03_131014_create_p_c__club_ses_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PC_ClubPCSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PC_ClubPCSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/PC_Club/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PC_Club/posts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PC_Club/Admin/Ses_Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PC_Club/Admin/Ses_Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/edit.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,55 +21,35 @@
     <favorites_list name="PC_Club" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PC_Club/Admin/Ses_Controller.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="471">
-                  <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
-                  <folding>
-                    <element signature="e#54#79#0#PHP" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/edit.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="415">
-                  <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/routes/web.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="5" selection-start-column="5" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/index.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_add_col.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="658">
+              <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_main_col.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -102,7 +70,6 @@
         <option value="$PROJECT_DIR$/database/seeds/PC_ClubSesSeeders.php" />
         <option value="$PROJECT_DIR$/database/factories/PC_Club_PC_Factory.php" />
         <option value="$PROJECT_DIR$/database/seeds/PC_ClubTableSesSeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
         <option value="$PROJECT_DIR$/database/factories/PC_Club_Ses_Factory.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RestTestController.php" />
@@ -125,10 +92,15 @@
         <option value="$PROJECT_DIR$/database/seeds/PC_ClubPCSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_03_130952_create_p_c__club_p_cs_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_03_131014_create_p_c__club_ses_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_add_col.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/PC_ClubSes.php" />
-        <option value="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_main_col.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/PC_ClubSesUpdateRequest.php" />
+        <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
+        <option value="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_create_main_col.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/PC_ClubSesCreateRequest.php" />
+        <option value="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PC_Club/Admin/Ses_Controller.php" />
+        <option value="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_main_col.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_add_col.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/edit.blade.php" />
       </list>
     </option>
@@ -234,10 +206,10 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1280" />
-    <option name="width" value="1920" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1265" />
+    <option name="width" value="1900" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -245,6 +217,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,24 +234,20 @@
               <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
               <item name="PC_Club" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PC_Club" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Requests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PC_Club" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PC_Club" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PC_Club" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="factories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PC_Club" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
@@ -330,16 +299,10 @@
               <item name="Ses" type="462c0819:PsiDirectoryNode" />
               <item name="includes" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="PC_Club" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PC_Club" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -398,17 +361,21 @@
       <workItem from="1557401206691" duration="10011000" />
       <workItem from="1557416814364" duration="258000" />
       <workItem from="1557471730987" duration="12859000" />
+      <workItem from="1557570953368" duration="7449000" />
+      <workItem from="1557926588909" duration="4463000" />
+      <workItem from="1558000285081" duration="3190000" />
+      <workItem from="1558026434062" duration="2151000" />
+      <workItem from="1558072951740" duration="867000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96433000" />
+    <option name="totallyTimeSpent" value="114553000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="0" width="1920" height="1050" extended-state="7" />
-    <editor active="true" />
+    <frame x="1280" y="0" width="1920" height="1050" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992908" visible="true" weight="0.15208112" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992908" visible="true" weight="0.16008538" />
       <window_info id="Structure" order="1" sideWeight="0.50070924" side_tool="true" weight="0.14407684" />
       <window_info id="Favorites" order="2" sideWeight="0.50070924" side_tool="true" weight="0.14407684" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -422,7 +389,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010672" side_tool="true" weight="0.23535791" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49893278" visible="true" weight="0.23535791" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49893278" visible="true" weight="0.23535791" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -433,62 +400,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Schema.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/HandleExceptions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1090">
           <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#7#34#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" column="47" selection-start-line="19" selection-start-column="13" selection-end-line="22" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -649,20 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -701,20 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_add_col.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="39" column="108" selection-start-line="39" selection-start-column="108" selection-end-line="39" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/SoftDeletes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
@@ -739,13 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_main_col.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/PC_ClubSes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -756,20 +636,101 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="62" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#7#34#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_create_main_col.blade.php" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/PC_ClubSesUpdateRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/PC_ClubSesCreateRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PC_Club/Admin/Ses_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
+        <state relative-caret-position="905">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
           <folding>
-            <element signature="e#54#79#0#PHP" expanded="true" />
+            <element signature="e#54#100#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_add_col.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+        <state relative-caret-position="658">
+          <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/PC_Club/admin/Ses/includes/item_edit_main_col.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
         </state>
       </provider>
     </entry>

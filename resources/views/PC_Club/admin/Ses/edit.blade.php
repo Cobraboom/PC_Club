@@ -4,12 +4,19 @@
     @php
         /** @var \App\Models\PC_ClubSes $ses_item */
     @endphp
-    <form method="post" action="{{route('PC_Club.admin.Ses.update', $ses_item -> id)}}">
-        @method('PATCH')
-        @csrf
-        <div class = "container">
+    @if($ses_item->exists)
+    <form method="post" action="{{ route('PC_Club.admin.Ses.update', $ses_item -> id) }}">
+            @method('PATCH')
+
+    @else
+    <form method="post" action="{{ route('PC_Club.admin.Ses.store') }}">
+    @endif
+    @csrf
+
+        <div class="container">
+
             @php
-                /** @var \Illuminate\Support\ViewErrorBag $errors */
+                    /** @var \Illuminate\Support\ViewErrorBag $errors */
             @endphp
             @if($errors->any())
                 <div class="row justify-content-center">
@@ -36,14 +43,16 @@
                     </div>
                 </div>
             @endif
-            <div class="row justify-content-ce nter">
+            <div class="row justify-content-center">
                 <div class="col-md-8">
-                    @include('PC_Club.admin.Ses.includes.item_edit_main_col')
+                        @include('PC_Club.admin.Ses.includes.item_edit_main_col')
                 </div>
+
                 <div class="col-md-3">
-                    @include('PC_Club.admin.Ses.includes.item_edit_add_col')
+                        @include('PC_Club.admin.Ses.includes.item_edit_add_col')
                 </div>
             </div>
         </div>
     </form>
+</form>
 @endsection
