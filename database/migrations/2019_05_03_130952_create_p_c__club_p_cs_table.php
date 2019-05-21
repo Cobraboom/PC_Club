@@ -16,7 +16,7 @@ class CreatePCClubPCsTable extends Migration
         Schema::create('p_c__club_p_cs', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('PC_Name')->unique();
+            $table->string('PC_Name');
             $table->text('PC_Info')->nullable();
             $table->timestamps();
             $table->softDeletes();

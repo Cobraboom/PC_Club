@@ -14,15 +14,27 @@
                             <thead>
                             <tr>
                                 <th>id_PC</th>
-                                <th>Имя_PC</th>
+                                <th>PC_Name</th>
+                                <th>PC_Info</th>
+                                <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($paginator as $PC)
-                                @php /** @var \App\Models\PC_ClubPC $item */ @endphp
+                                @php /** @var \App\Models\PC_ClubPC $PC_item */ @endphp
                                 <tr>
                                     <td>{{ $PC -> id }}</td>
                                     <td>{{ $PC -> PC_Name }}</td>
+                                    <td>{{ $PC -> PC_info }}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ route('PC_Club.admin.PC.edit', $PC -> id) }}">
+                                            Изменить
+                                        </a>
+                                        <a class="btn btn-primary" href="{{ route('PC_Club.admin.PC.destroy', $PC -> id )}}">
+                                            Удалить
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

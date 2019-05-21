@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 Auth::routes();
@@ -32,7 +32,7 @@ $groupData =[
 ];
 Route::group($groupData, function (){
     //PC_Club_PC
-    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    $methods = ['index', 'edit', 'update', 'create', 'store', 'destroy'];
     Route::resource('PC', 'PC_Controller')
         ->only($methods)
         ->names('PC_Club.admin.PC');

@@ -4,14 +4,34 @@ namespace App\Http\Controllers\PC_Club\Admin;
 
 use App\Http\Requests\PC_ClubSesCreateRequest;
 use App\Http\Requests\PC_ClubSesUpdateRequest;
-use App\Models\PC_ClubPC;
 use App\Models\PC_ClubSes;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Repositories\PC_ClubSesRepository;
+use App\Repositories\PC_ClubUsersRepository;
+use App\Repositories\PC_ClubPCRepository;
 
 
 class Ses_Controller extends BaseController
 {
+
+    /**
+     * @var PC_ClubSesRepository
+     * @var PC_ClubUsersRepository
+     * @var PC_ClubPCRepository
+     */
+
+    private $PC_ClubSesRepository,
+            $PC_ClubUsersRepository,
+            $PC_ClubPCRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->PC_ClubSesRepository = app(PC_ClubSesRepository::class);
+        $this->PC_ClubUsersRepository = app(PC_ClubUsersRepository::class);
+        $this->PC_ClubPCRepository = app(PC_ClubPCRepository::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +39,8 @@ class Ses_Controller extends BaseController
      */
     public function index()
     {
-        $paginator = PC_ClubSes::paginate(5);
+        //$paginator = PC_ClubSes::paginate(5);
+        $paginator = $this->PC_ClubSesRepository->getAllWithPaginate(5);
 
         return view('PC_Club.admin.Ses.index', compact('paginator'));
     }
@@ -32,8 +53,8 @@ class Ses_Controller extends BaseController
     public function create()
     {
         $ses_item = new PC_ClubSes();
-        $PC_list = PC_ClubPC::all();
-        $User_list = User::all('id', 'login');
+        $PC_list = $this -> PC_ClubPCRepository -> getForComboBoxPC();
+        $User_list = $this -> PC_ClubUsersRepository -> getForComboBoxUser();
 
         return view('PC_Club.admin.Ses.create',
             compact('ses_item', 'PC_list', 'User_list'));
@@ -69,15 +90,11 @@ class Ses_Controller extends BaseController
                 ->withInput();
         }
         else {
-            // Создаем объект, но не добавляем в БД
-            $ses_item = new PC_ClubSes($data);
-            //dd($ses_item);
-            $ses_item -> save();
-            //dd($ses_item);
 
-            $result = $ses_item->fill($data)->save();
+            // Создаем и добавление объекта в БД
+            $ses_item = (new PC_ClubSes())->create($data);
 
-            if ($result){
+            if ($ses_item){
                 return redirect()
                     ->route('PC_Club.admin.Ses.edit', $ses_item->id)
                     ->with(['success' => 'Успешно сохранено']);
@@ -111,10 +128,19 @@ class Ses_Controller extends BaseController
      */
     public function edit($id)
     {
-        $ses_item = PC_ClubSes::findOrFail($id);
-        $PC_list = PC_ClubPC::all();
-        $User_list = User::all('id', 'login');
 
+        $ses_item   =   $this  ->   PC_ClubSesRepository    ->  getEdit($id);
+        if (empty($ses_item)){
+            abort(404);
+        }
+        $PC_list    =   $this  ->   PC_ClubPCRepository     ->  getForComboBoxPC();
+        $User_list  =   $this  ->   PC_ClubUsersRepository  ->  getForComboBoxUser();
+
+        /*$ses_item   =   PC_ClubSes::findOrFail($id);
+        $PC_list = PC_ClubPC::all();
+        $User_list = User::all('id', 'login');*/
+
+        dd($ses_item);
         return view('PC_Club.admin.Ses.edit',
             compact('ses_item', 'PC_list', 'User_list'));
     }
@@ -128,7 +154,7 @@ class Ses_Controller extends BaseController
      */
     public function update(PC_ClubSesUpdateRequest $request, $id)
     {
-        $ses_item = PC_ClubSes::find($id);
+        $ses_item = $this -> PC_ClubSesRepository -> getEdit($id);
 
         //dd($ses_item);
         if (empty($ses_item)){
@@ -140,7 +166,7 @@ class Ses_Controller extends BaseController
         $data = $request -> all();
         //dd($data);
 
-        if (empty($data['time_start'] || $data['time_end'])){
+        if (empty($data['time_start'] &&  $data['time_end'])){
             return back()
                 ->withErrors(['msg' => "Вы не указали дату и время"])
                 ->withInput();

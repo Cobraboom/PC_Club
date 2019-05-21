@@ -22,7 +22,7 @@
                                     placeholder="Выберите PC">
                             @foreach($PC_list as $PC_listOption)
                                     <option value="{{$PC_listOption -> id}}">
-                                        {{$PC_listOption -> id}}
+                                        {{$PC_listOption -> id_PCname}}
                                     </option>
                             @endforeach
                             </select>
@@ -36,7 +36,7 @@
                                     placeholder="Выберите Пользователя">
                                 @foreach($User_list as $User_listOption)
                                     <option value="{{$User_listOption -> id}}">
-                                        {{$User_listOption -> id}}. {{$User_listOption -> login}}
+                                    {{$User_listOption -> id_login}}
                                     </option>
                                 @endforeach
                             </select>
@@ -59,7 +59,6 @@
                                    class="form-control"
                                    placeholder="Время конца сеанса">
                         </div>
-
                     </div>
                 </div>
             </div>

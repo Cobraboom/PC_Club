@@ -10,6 +10,7 @@ class PC_ClubSes extends Model
     use SoftDeletes;
 
     protected $fillable =[
+            //'id',
             'id_pc',
             'user_id',
             'time_start',
