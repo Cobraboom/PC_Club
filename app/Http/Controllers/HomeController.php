@@ -23,12 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        /*if (route('app')){
-            return view('layouts.app');
-        }*/
-        if (route('home')){
-            return view('home');
-        }
-
+        return view('home');
     }
 }

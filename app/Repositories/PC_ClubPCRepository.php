@@ -79,4 +79,98 @@ class PC_ClubPCRepository extends CoreRepository
         return $result;
     }
 
+    /**
+     * Проверка полей при update
+     *
+     * @param $PC_item
+     * @param $data
+     * @param int $id
+     * @return \Illuminate\Http\Response\
+     *
+     */
+    public function getCheckFormUpdate($PC_item, $data, $id){
+
+        // Запрос на существование данных
+        $check = \DB::select('SELECT * FROM `p_c__club_p_c_s` WHERE (`id` != '.$id.') AND (`PC_Name` = "'.$data['PC_Name'].'")');
+
+        // Проверка на существование записи
+        if (empty($PC_item)){
+            return back()
+                ->withErrors(['msg' => "Запись id=[{$id}] не найдена"])
+                ->withInput();
+        }
+
+        // Проверка на заполнение полей
+        if (empty($data['PC_Name'] && $data['PC_Info'])){
+            return back()
+                ->withErrors(['msg' => "Заполните поля"])
+                ->withInput();
+        }
+
+        // Проверка на существование данных
+        if($check == true){
+            return back()
+                ->withErrors(['msg' => "Данное имя уже занято"])
+                ->withInput();
+        }
+        else {
+            $result = $PC_item->fill($data)->save();
+
+            if ($result){
+                return redirect()
+                    ->route('PC_Club.admin.PC.edit', $PC_item->id)
+                    ->with(['success' => 'Успешно сохранено']);
+            }
+            else {
+                return back()
+                    ->withErrors(['msg' => "Ошибка при сохранении"])
+                    ->withInput();
+            }
+
+        }
+    }
+
+    /**
+     * Проверка полей при store
+     *
+     * @param $data
+     *
+     * @return \Illuminate\Http\Response\
+     *
+     */
+    public function getCheckFormStore($data){
+
+        // Запрос на существование данных
+        $check_1 = \DB::select('SELECT * FROM `p_c__club_p_c_s` WHERE (`PC_Name` = "'.$data['PC_Name'].'")');
+
+        // Проверка на заполнение полей
+        if (empty($data['PC_Name'] && $data['PC_Info'])){
+            return back()
+                ->withErrors(['msg' => "Заполните поля"])
+                ->withInput();
+        }
+
+        if($check_1 == true){
+            return back()
+                ->withErrors(['msg' => "Данное имя уже занято"])
+                ->withInput();
+        }
+        else {
+
+            // Создаем и добавление объекта в БД
+            $PC_item = (new Model_PC())->create($data);
+
+            if ($PC_item){
+                return redirect()
+                    ->route('PC_Club.admin.PC.edit', $PC_item->id)
+                    ->with(['success' => 'Успешно сохранено']);
+            }
+            else {
+                return back()
+                    ->withErrors(['msg' => "Ошибка при сохранении"])
+                    ->withInput();
+            }
+        }
+    }
+
 }

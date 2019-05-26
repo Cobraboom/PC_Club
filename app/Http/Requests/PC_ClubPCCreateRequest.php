@@ -27,8 +27,8 @@ class PC_ClubPCCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //'PC_Name' => 'required|exists:p_c__club_p_cs,PC_Name',
-            //'PC_Info' => 'required|exists:p_c__club_p_cs,PC_Info',
+            //'PC_Name' => 'required|exists:p_c__club_p_c_s,PC_Name',
+            //'PC_Info' => 'required|exists:p_c__club_p_c_s,PC_Info',
         ];
     }
 }

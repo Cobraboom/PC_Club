@@ -1,27 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\PC_Club\Admin;
+namespace App\Http\Controllers\PC_Club\Users;
 
-use App\Http\Requests\PC_ClubPCCreateRequest;
-use App\Http\Requests\PC_ClubPCUpdateRequest;
-use App\Models\PC_ClubPC;
+use App\Http\Requests\PC_ClubSesCreateRequest;
+use App\Http\Requests\PC_ClubSesUpdateRequest;
+use App\Http\Controllers\PC_Club\Users\BaseController as Users_BaseController;
+use App\Repositories\PC_ClubSesRepository;
+use App\Repositories\PC_ClubUsersRepository;
 use App\Repositories\PC_ClubPCRepository;
 
-class PC_Controller extends BaseController
+class Ses_Controller extends Users_BaseController
 {
-
     /**
+     * @var PC_ClubSesRepository
+     * @var PC_ClubUsersRepository
      * @var PC_ClubPCRepository
      */
 
     private
-
+        $PC_ClubSesRepository,
+        $PC_ClubUsersRepository,
         $PC_ClubPCRepository;
 
     public function __construct()
     {
         parent::__construct();
 
+        $this->PC_ClubSesRepository = app(PC_ClubSesRepository::class);
+        $this->PC_ClubUsersRepository = app(PC_ClubUsersRepository::class);
         $this->PC_ClubPCRepository = app(PC_ClubPCRepository::class);
     }
 
@@ -32,9 +38,9 @@ class PC_Controller extends BaseController
      */
     public function index()
     {
-        $paginator = $this->PC_ClubPCRepository->getAllWithPaginate(5);
+        $paginator = $this -> PC_ClubSesRepository ->getAllWithPaginate(5);
 
-        return view('PC_Club.admin.PC.index', compact('paginator'));
+        return view('PC_Club.users.Ses.index', compact('paginator'));
     }
 
     /**
@@ -44,13 +50,11 @@ class PC_Controller extends BaseController
      */
     public function create()
     {
-        $PC_item = new PC_ClubPC();
+        $ses_item = new PC_ClubSes();
         $PC_list = $this -> PC_ClubPCRepository -> getForComboBoxPC();
-        //$User_list = $this -> PC_ClubUsersRepository -> getForComboBoxUser();
 
-        return view('PC_Club.admin.PC.create',
-            compact('PC_item', 'PC_list'
-            /*,'User_list'*/));
+        return view('PC_Club.users.Ses.create',
+            compact('ses_item', 'PC_list'));
     }
 
     /**
@@ -59,10 +63,10 @@ class PC_Controller extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PC_ClubPCCreateRequest $request)
+    public function store(PC_ClubSesCreateRequest $request)
     {
         $data =$request->input();
-        $check_store = $this ->PC_ClubPCRepository ->getCheckFormStore($data);
+        $check_store = $this -> PC_ClubSesRepository ->getConditionCheckStore($data);
 
         return $check_store;
     }
@@ -86,14 +90,14 @@ class PC_Controller extends BaseController
      */
     public function edit($id)
     {
-
-        $PC_item   =   $this  ->   PC_ClubPCRepository    ->  getEdit($id);
-        if (empty($PC_item)){
+        $ses_item   =   $this  ->   PC_ClubSesRepository    ->  getEdit($id);
+        if (empty($ses_item)){
             abort(404);
         }
-        //dd($PC_item);
-        return view('PC_Club.admin.PC.edit',
-            compact('PC_item'));
+        $PC_list    =   $this  ->   PC_ClubPCRepository     ->  getForComboBoxPC();
+
+        return view('PC_Club.users.Ses.edit',
+            compact('ses_item', 'PC_list'));
     }
 
     /**
@@ -103,11 +107,11 @@ class PC_Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PC_ClubPCUpdateRequest $request, $id)
+    public function update(PC_ClubSesUpdateRequest $request, $id)
     {
-        $PC_item = $this -> PC_ClubPCRepository -> getEdit($id);
-        $data = $request -> input();
-        $check_update = $this -> PC_ClubPCRepository ->getCheckFormUpdate($PC_item, $data, $id);
+        $ses_item = $this -> PC_ClubSesRepository -> getEdit($id);
+        $data = $request->input();
+        $check_update = $this -> PC_ClubSesRepository -> getConditionCheckUpdate($ses_item, $data, $id);
 
         return $check_update;
     }
@@ -120,6 +124,6 @@ class PC_Controller extends BaseController
      */
     public function destroy($id)
     {
-        //
+        dd(__METHOD__, $id);
     }
 }

@@ -31,6 +31,6 @@ class PC_ClubPCSeeder extends Seeder
 
             ];
         }
-        DB::table('p_c__club_p_cs')->insert($PC);
+        DB::table('p_c__club_p_c_s')->insert($PC);
     }
 }

@@ -26,11 +26,11 @@ Route::group(['namespace' => 'PC_Club', 'prefix' => 'sessia'], function (){
 
 //Админка ПК Клуба
 
-$groupData =[
+$groupDataAdmin =[
     'namespace' => 'PC_Club\Admin',
     'prefix' => 'admin/PC_Club',
 ];
-Route::group($groupData, function (){
+Route::group($groupDataAdmin, function (){
     //PC_Club_PC
     $methods = ['index', 'edit', 'update', 'create', 'store', 'destroy'];
     Route::resource('PC', 'PC_Controller')
@@ -38,7 +38,7 @@ Route::group($groupData, function (){
         ->names('PC_Club.admin.PC');
 });
 
-Route::group($groupData, function (){
+Route::group($groupDataAdmin, function (){
     //PC_Club_Ses
     $methods = ['index', 'edit', 'update', 'create', 'store',];
     Route::resource('Ses', 'Ses_Controller')
@@ -46,6 +46,25 @@ Route::group($groupData, function (){
         ->names('PC_Club.admin.Ses');
 });
 
+//Пользователь ПК Клуба
+$groupDataUsers =[
+    'namespace' => 'PC_Club\Users',
+    'prefix'    => 'users/PC_Club'
+];
+Route::group($groupDataUsers, function (){
+    //users PC_Club_Ses
+    $methods = ['index', 'edit', 'update', 'create', 'store', 'destroy'];
+    Route::resource('Ses', 'Ses_Controller')
+        ->only($methods)
+        ->names('PC_Club.users.Ses');
+});
+
+Route::group($groupDataUsers, function (){
+    $methods = ['index', 'edit', 'update', 'create', 'store', 'destroy'];
+    Route::resource('Booking', 'Booking_Controller')
+        ->only($methods)
+        ->names('PC_Club.users.Booking');
+});
 //Route::resource('rest', 'RestTestController')->names('restTest');
 
 //Route::get('app', 'HomeController@index')->name('app');

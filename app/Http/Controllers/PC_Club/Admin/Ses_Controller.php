@@ -69,44 +69,9 @@ class Ses_Controller extends BaseController
     public function store(PC_ClubSesCreateRequest $request)
     {
         $data =$request->input();
+        $check_store = $this -> PC_ClubSesRepository ->getConditionCheckStore($data);
 
-        if (empty($data['time_start'] && $data['time_end'])){
-            return back()
-                ->withErrors(['msg' => "Вы не указали дату и время"])
-                ->withInput();
-        }
-
-        $bron = \DB::select('SELECT * FROM `p_c__club_ses` WHERE (`id_pc` = '.$data['id_pc'].') AND (((`time_start` < "'.$data['time_start'].'")
-        AND (`time_end` > "'.$data['time_end'].'")) OR ((`time_start` > "'.$data['time_start'].'")
-        AND (`time_end` < "'.$data['time_end'].'")) OR ((`time_end` > "'.$data['time_start'].'")
-        AND (`time_start` < "'.$data['time_end'].'")))');
-
-        //dd($bron);
-        //$bron = true;
-
-        if($bron == true ){
-            return back()
-                ->withErrors(['msg' => "Данный компьютер занят в данный промежуток времени"])
-                ->withInput();
-        }
-        else {
-
-            // Создаем и добавление объекта в БД
-            $ses_item = (new PC_ClubSes())->create($data);
-
-            if ($ses_item){
-                return redirect()
-                    ->route('PC_Club.admin.Ses.edit', $ses_item->id)
-                    ->with(['success' => 'Успешно сохранено']);
-            }
-            else {
-                return back()
-                    ->withErrors(['msg' => "Ошибка при сохранении"])
-                    ->withInput();
-            }
-
-        }
-
+        return $check_store;
     }
 
     /**
@@ -140,7 +105,7 @@ class Ses_Controller extends BaseController
         $PC_list = PC_ClubPC::all();
         $User_list = User::all('id', 'login');*/
 
-        dd($ses_item);
+        //dd($ses_item);
         return view('PC_Club.admin.Ses.edit',
             compact('ses_item', 'PC_list', 'User_list'));
     }
@@ -155,49 +120,10 @@ class Ses_Controller extends BaseController
     public function update(PC_ClubSesUpdateRequest $request, $id)
     {
         $ses_item = $this -> PC_ClubSesRepository -> getEdit($id);
+        $data = $request->input();
+        $check_update = $this -> PC_ClubSesRepository -> getConditionCheckUpdate($ses_item, $data, $id);
 
-        //dd($ses_item);
-        if (empty($ses_item)){
-            return back()
-                ->withErrors(['msg' => "Запись id=[{$id}] не найдена"])
-                ->withInput();
-        }
-
-        $data = $request -> all();
-        //dd($data);
-
-        if (empty($data['time_start'] &&  $data['time_end'])){
-            return back()
-                ->withErrors(['msg' => "Вы не указали дату и время"])
-                ->withInput();
-        }
-
-        $bron = \DB::select('SELECT * FROM `p_c__club_ses` WHERE (`id_pc` = '.$data['id_pc'].') AND (((`time_start` < "'.$data['time_start'].'")
-        AND (`time_end` > "'.$data['time_end'].'")) OR ((`time_start` > "'.$data['time_start'].'")
-        AND (`time_end` < "'.$data['time_end'].'")) OR ((`time_end` > "'.$data['time_start'].'")
-        AND (`time_start` < "'.$data['time_end'].'")))');
-
-        if($bron == true ){
-            return back()
-                ->withErrors(['msg' => "Данный компьютер занят в данный промежуток времени"])
-                ->withInput();
-        }
-        else {
-            $result = $ses_item->fill($data)->save();
-
-            if ($result){
-                return redirect()
-                    ->route('PC_Club.admin.Ses.edit', $ses_item->id)
-                    ->with(['success' => 'Успешно сохранено']);
-            }
-            else {
-                return back()
-                    ->withErrors(['msg' => "Ошибка при сохранении"])
-                    ->withInput();
-            }
-        }
-
-
+        return $check_update;
     }
 
     /**

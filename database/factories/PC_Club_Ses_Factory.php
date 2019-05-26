@@ -1,9 +1,13 @@
 <?php
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\PC_ClubSes;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\PC_ClubSes::class, function (Faker $faker) {
+
+
+$factory->define( PC_ClubSes::class, function (Faker $faker) {
 
     //$users = DB::table('users')->select('login')->get();
     //$pc_id =DB::table('pc_club_pc')->select('id')->get();
