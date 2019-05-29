@@ -1,3 +1,10 @@
+<?php
+    if (\Illuminate\Support\Facades\Auth::check()){
+        $user_id = Auth::user()->id;
+        $is_admin = Auth::user()->is_admin;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -7,7 +14,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('PC_Club_Name', 'PC_Club') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -33,12 +40,47 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('PC_Club.admin.Ses.index') }}">Журнал Сессий</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('PC_Club.admin.PC.index') }}">Журнал PC</a>
-                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> О Нас</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">Помощь</a>
+                            </li>
+
+                        @else
+                            @if($is_admin == false)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"> О Нас</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#">Поиощь</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('PC_Club.users.Ses.index') }}">Журнал Сессий</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('PC_Club.users.Ses.create') }}">Бронирование</a>
+                                </li>
+
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"> О Нас</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#">Помощь</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('PC_Club.admin.Ses.index') }}">Журнал Сессий</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('PC_Club.admin.PC.index') }}">Журнал PC</a>
+                                </li>
+                            @endif
+                        @endguest
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -56,14 +98,14 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->login }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выход') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

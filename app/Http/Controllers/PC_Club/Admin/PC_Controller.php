@@ -120,6 +120,14 @@ class PC_Controller extends BaseController
      */
     public function destroy($id)
     {
-        //
+        $result = PC_ClubPC::destroy($id);
+        if ($result){
+            return redirect()
+                ->route('PC_Club.admin.Ses.index')
+                ->with(['success' => "Запись id[$id] удалена"]);
+        }
+        else{
+            return back()->withErrors(['msg' => 'Ошибка удаления']);
+        }
     }
 }

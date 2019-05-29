@@ -3,6 +3,12 @@
 @section('content')
 
     <div class="container">
+        @php
+            /** @var \Illuminate\Support\ViewErrorBag $errors */
+        @endphp
+
+        @include('PC_Club.admin.Ses.includes.result_messages')
+
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -30,9 +36,6 @@
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('PC_Club.admin.PC.edit', $PC -> id) }}">
                                             Изменить
-                                        </a>
-                                        <a class="btn btn-primary" href="{{ route('PC_Club.admin.PC.destroy', $PC -> id )}}">
-                                            Удалить
                                         </a>
                                     </td>
                                 </tr>

@@ -32,6 +32,7 @@ class PC_ClubSes extends Model
        return $this -> belongsTo(PC_ClubPC::class);
    }*/
 
+
     protected $fillable =[
             //'id',
             'id_pc',

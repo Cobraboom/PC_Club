@@ -18,31 +18,9 @@
             @php
                     /** @var \Illuminate\Support\ViewErrorBag $errors */
             @endphp
-            @if($errors->any())
-                <div class="row justify-content-center">
-                    <div class="col-md-11">
-                        <div class="alert alert-danger" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                            {{$errors->first()}}
-                        </div>
-                    </div>
-                </div>
-            @endif
 
-            @if(session('success'))
-                <div class="row justify-content-center">
-                    <div class="col-md-11">
-                        <div class="alert alert-success" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">x</span>
-                            </button>
-                            {{session()->get('success')}}
-                        </div>
-                    </div>
-                </div>
-            @endif
+            @include('PC_Club.admin.Ses.includes.result_messages')
+
             <div class="row justify-content-center">
                 <div class="col-md-8">
                         @include('PC_Club.admin.Ses.includes.item_edit_main_col')
@@ -55,4 +33,14 @@
         </div>
     </form>
 </form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @include('PC_Club.admin.Ses.includes.item_edit_delete-col')
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
 @endsection

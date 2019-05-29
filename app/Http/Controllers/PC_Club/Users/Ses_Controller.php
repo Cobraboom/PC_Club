@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\PC_Club\Users;
 
+
+use App\Models\PC_ClubSes;
 use App\Http\Requests\PC_ClubSesCreateRequest;
 use App\Http\Requests\PC_ClubSesUpdateRequest;
 use App\Http\Controllers\PC_Club\Users\BaseController as Users_BaseController;
 use App\Repositories\PC_ClubSesRepository;
 use App\Repositories\PC_ClubUsersRepository;
 use App\Repositories\PC_ClubPCRepository;
+use Illuminate\Support\Facades\Auth;
 
 class Ses_Controller extends Users_BaseController
 {
@@ -66,6 +69,7 @@ class Ses_Controller extends Users_BaseController
     public function store(PC_ClubSesCreateRequest $request)
     {
         $data =$request->input();
+        //dd($data);
         $check_store = $this -> PC_ClubSesRepository ->getConditionCheckStore($data);
 
         return $check_store;
@@ -124,6 +128,14 @@ class Ses_Controller extends Users_BaseController
      */
     public function destroy($id)
     {
-        dd(__METHOD__, $id);
+        $result = PC_ClubSes::destroy($id);
+        if ($result){
+            return redirect()
+                ->route('PC_Club.users.Ses.index')
+                ->with(['success' => "Запись id[$id] удалена"]);
+        }
+        else{
+            return back()->withErrors(['msg' => 'Ошибка удаления']);
+        }
     }
 }

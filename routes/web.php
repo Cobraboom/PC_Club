@@ -40,7 +40,7 @@ Route::group($groupDataAdmin, function (){
 
 Route::group($groupDataAdmin, function (){
     //PC_Club_Ses
-    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    $methods = ['index', 'edit', 'update', 'create', 'store', 'destroy'];
     Route::resource('Ses', 'Ses_Controller')
         ->only($methods)
         ->names('PC_Club.admin.Ses');

@@ -3,8 +3,11 @@
 
 namespace App\Repositories;
 
+
+
 use App\Models\PC_ClubSes as Model_Ses;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PC_ClubSesRepository
@@ -20,6 +23,7 @@ class PC_ClubSesRepository extends CoreRepository
     {
         return Model_Ses::class;
     }
+
 
     /**
      * Получить модель для редактирования в Админке
@@ -42,16 +46,42 @@ class PC_ClubSesRepository extends CoreRepository
      */
     public function getAllWithPaginate($perPage = null)
     {
-        $columns =['id', 'id_pc', 'user_id', 'time_start', 'time_end'];
+        if (\Auth::check()){
 
-        $result = $this
-            ->startConditions()
-            ->select($columns)
-            ->orderBy('id', 'DESC')
-            ->with(['user:id,login'])
-            ->paginate($perPage);
-        //dd($result -> first());
-        return $result;
+            $user_id = Auth::user()->id;
+            $is_admin = Auth::user()->is_admin;
+
+
+            //dd($user_id, $is_admin);
+            if ($is_admin == true){
+
+                $columns =['id', 'id_pc', 'user_id', 'time_start', 'time_end'];
+                $result = $this
+                    ->startConditions()
+                    ->select($columns)
+                    ->orderBy('id', 'DESC')
+                    ->with(['user:id,login'])
+                    ->paginate($perPage);
+                //dd($result -> first());
+                return $result;
+
+            }
+            else{
+                $columns =['id', 'id_pc', 'user_id', 'time_start', 'time_end'];
+                $result = $this
+                    ->startConditions()
+                    ->select($columns)
+                    ->orderBy('id', 'DESC')
+                    ->with(['user:id,login'])
+                    ->latest('user_id')
+                    ->where('user_id', '=', $user_id)
+                    ->paginate($perPage);
+
+                return $result;
+            }
+        }
+
+
     }
 
     /**
@@ -90,8 +120,8 @@ class PC_ClubSesRepository extends CoreRepository
                 ->withInput();
         }
         else {
-            $result = $ses_item->fill($data)->save();
-
+            $result = $ses_item->update($data);
+            //dd($result);
             if ($result){
                 return redirect()
                     ->route('PC_Club.admin.Ses.edit', $ses_item->id)
@@ -132,21 +162,46 @@ class PC_ClubSesRepository extends CoreRepository
                 ->withInput();
         }
         else {
-
             // Создаем и добавление объекта в БД
-            $ses_item = (new Model_Ses())->create($data);
 
-            if ($ses_item){
-                return redirect()
-                    ->route('PC_Club.admin.Ses.edit', $ses_item->id)
-                    ->with(['success' => 'Успешно сохранено']);
-            }
-            else {
-                return back()
-                    ->withErrors(['msg' => "Ошибка при сохранении"])
-                    ->withInput();
-            }
+            $is_admin =Auth::user()->is_admin;
 
+            if ($is_admin == false){
+                $user_id = Auth::user()->id;
+                $data = [
+                    '_token' => $data['_token'],
+                    'user_id' => $user_id,
+                    'time_start' => $data['time_start'],
+                    'time_end' => $data['time_end'],
+                    'id_pc' => $data['id_pc']
+                ];
+                $ses_item = (new Model_Ses())->create($data);
+
+                if ($ses_item){
+                    return redirect()
+                        ->route('PC_Club.admin.Ses.edit', $ses_item->id)
+                        ->with(['success' => 'Успешно сохранено']);
+                }
+                else {
+                    return back()
+                        ->withErrors(['msg' => "Ошибка при сохранении"])
+                        ->withInput();
+                }
+            }
+            else{
+                $ses_item = (new Model_Ses())->create($data);
+
+                if ($ses_item){
+                    return redirect()
+                        ->route('PC_Club.admin.Ses.edit', $ses_item->id)
+                        ->with(['success' => 'Успешно сохранено']);
+                }
+                else {
+                    return back()
+                        ->withErrors(['msg' => "Ошибка при сохранении"])
+                        ->withInput();
+                }
+            }
         }
     }
 }

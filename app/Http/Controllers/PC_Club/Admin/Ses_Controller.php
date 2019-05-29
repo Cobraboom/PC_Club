@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PC_Club\Admin;
 use App\Http\Requests\PC_ClubSesCreateRequest;
 use App\Http\Requests\PC_ClubSesUpdateRequest;
 use App\Models\PC_ClubSes;
+use App\Models\User;
 use App\Repositories\PC_ClubSesRepository;
 use App\Repositories\PC_ClubUsersRepository;
 use App\Repositories\PC_ClubPCRepository;
@@ -41,6 +42,7 @@ class Ses_Controller extends BaseController
     {
         //$paginator = PC_ClubSes::paginate(5);
         $paginator = $this->PC_ClubSesRepository->getAllWithPaginate(5);
+        
 
         return view('PC_Club.admin.Ses.index', compact('paginator'));
     }
@@ -134,6 +136,14 @@ class Ses_Controller extends BaseController
      */
     public function destroy($id)
     {
-        //
+        $result = PC_ClubSes::destroy($id);
+        if ($result){
+            return redirect()
+                ->route('PC_Club.admin.Ses.index')
+                ->with(['success' => "Запись id[$id] удалена"]);
+        }
+        else{
+            return back()->withErrors(['msg' => 'Ошибка удаления']);
+        }
     }
 }

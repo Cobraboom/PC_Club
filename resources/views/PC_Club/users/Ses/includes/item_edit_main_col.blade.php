@@ -19,7 +19,8 @@
                             <select name="id_pc"
                                     id="id_pc"
                                     class="form-control"
-                                    placeholder="Выберите PC">
+                                    placeholder="Выберите PC"
+                                    required>
                                 @foreach($PC_list as $PC_listOption)
                                     <option value="{{$PC_listOption -> id}}">
                                         {{$PC_listOption -> id_PCname}}
@@ -34,7 +35,8 @@
                                     name="time_start"
                                     id="time_start"
                                     class="form-control"
-                                    placeholder="Время начала сеанса">
+                                    placeholder="Время начала сеанса"
+                                    required>
                         </div>
 
                         <div class="form-group">
@@ -43,7 +45,8 @@
                                    name="time_end"
                                    id="time_end"
                                    class="form-control"
-                                   placeholder="Время конца сеанса">
+                                   placeholder="Время конца сеанса"
+                                   required>
                         </div>
                     </div>
                 </div>
